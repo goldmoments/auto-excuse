@@ -1,10 +1,8 @@
 local dmsgsi = dmsgs.deathmessages
-game.Players.LocalPlayer.CharacterAdded:Connect(function()
 wait(0.5)
 game.Players.LocalPlayer.Character.Humanoid.Died:connect(function()
 wait(0.5)
 	local s1 = dmsgsi[math.random(1, #dmsgsi)]
 	local s2 = "All"
 	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(s1, s2)
-end)
 end)
