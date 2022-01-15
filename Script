@@ -1,3 +1,5 @@
+while wait() do
 if game.Workspace[game.Players.LocalPlayer.Name].Humanoid.Health == 0 then
 print(dmsgs.deathmessages[math.random(1, #dmsgs.deathmessages)])
+end
 end
