@@ -1,5 +1,5 @@
 local dmsgsi = dmsgs.deathmessages
-game.Players.LocalPlayer.Character.Humanoid.Died:connect(function()
+
 local player = game:GetService("Players").LocalPlayer
 
 player.Character.Humanoid.Died:Connect(function()
@@ -9,9 +9,9 @@ player.Character.Humanoid.Died:Connect(function()
 end)
 
 player.CharacterAdded:Connect(function(Character)
-	Character:WaitForChild("Humanoid").Died:Connect(function()
-		local s1 = dmsgsi[math.random(1, #dmsgsi)]
-		local s2 = "All"
-		game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(s1, s2)
-	end)
+Character:WaitForChild("Humanoid").Died:Connect(function()
+	local s1 = dmsgsi[math.random(1, #dmsgsi)]
+	local s2 = "All"
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(s1, s2)
+end)
 end)
