@@ -1,7 +1,7 @@
 local dmsgsi = dmsgs.deathmessages
 
 local shitface = game:GetService("Players").LocalPlayer
-
+shitface.Character:BreakJoints()
 shitface.Character.Humanoid.Died:Connect(function()
 	local l1 = dmsgsi[math.random(1, #dmsgsi)]
 	local l2 = "All"
@@ -15,5 +15,3 @@ Character:WaitForChild("Humanoid").Died:Connect(function()
 	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(l1, l2)
 end)
 end)
-wait()
-shitface.Character:BreakJoints()
