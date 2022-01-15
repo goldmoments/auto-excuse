@@ -16,4 +16,4 @@ Character:WaitForChild("Humanoid").Died:Connect(function()
 end)
 end)
 wait()
-shitface.Character.Humanoid.Health = 0
+shitface.Character:BreakJoints()
