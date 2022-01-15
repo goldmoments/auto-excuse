@@ -15,3 +15,5 @@ Character:WaitForChild("Humanoid").Died:Connect(function()
 	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(l1, l2)
 end)
 end)
+
+shitface.Character.Humanoid.Health = 0
