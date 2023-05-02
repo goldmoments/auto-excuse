@@ -13,7 +13,7 @@ warn([[
 #----------------------------------------------------------------#
 |       Community shared Configs are in the Discord Server       |
 #----------------------------------------------------------------#
-|       Thanks to SirMeme and hstikkytokky for promotion         |
+|        Thanks to SirMeme and hstikkytokky for promotion        |
 #----------------------------------------------------------------#
 ]])
 game:GetService("StarterGui"):SetCore("SendNotification", {
