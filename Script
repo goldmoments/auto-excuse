@@ -1,15 +1,33 @@
-game:GetService("ReplicatedStorage").BindableFunction.OnInvoke = function(Button)
-	if Button == "Button1" then
-		setclipboard("https://discord.gg/9fDYMhQvPS")
+local Func = Instance.new("BindableFunction")
+
+function Func.OnInvoke(Response)
+	if Response == "Button1" then
+		syn.request(
+			{
+				Url = 'http://127.0.0.1:6463/rpc?v=1',
+				Method = 'POST',
+				Headers = {
+					['Content-Type'] = 'application/json',
+					['origin'] = 'https://ptb.discord.com',
+				},
+				Body = game:GetService('HttpService'):JSONEncode({
+					['args'] = {
+						['code'] = tostring(9fDYMhQvPS),
+					},
+					['cmd'] = 'INVITE_BROWSER',
+					['nonce'] = 'YOU'
+				})
+			})
 	end
 end
+
 game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Discord";
-	Text = "Copy Link";
-	Duration = 10;
-	Callback = game:GetService("ReplicatedStorage").BindableFunction;
-	Button1 = "Yes";
-	Button2 = "No";
+	Title = "Discord",
+	Text = "Join Discord Server?",
+	Duration = 10,
+	Callback = Func,
+	Button1 = "Yes",
+	Button2 = "No"
 })
 local dmsgsi = dmsgs.deathmessages
 local shitface = game:GetService("Players").LocalPlayer
