@@ -1,33 +1,27 @@
-local Func = Instance.new("BindableFunction")
+warn([[
 
-function Func.OnInvoke(Response)
-	if Response == "Button1" then
-		syn.request(
-			{
-				Url = 'http://127.0.0.1:6463/rpc?v=1',
-				Method = 'POST',
-				Headers = {
-					['Content-Type'] = 'application/json',
-					['origin'] = 'https://ptb.discord.com',
-				},
-				Body = game:GetService('HttpService'):JSONEncode({
-					['args'] = {
-						['code'] = tostring(9fDYMhQvPS),
-					},
-					['cmd'] = 'INVITE_BROWSER',
-					['nonce'] = 'YOU'
-				})
-			})
-	end
-end
-
+#----------------------------------------------------------------#
+|   __   _  _  ____  __       ____  _  _  ___  _  _  ____  ____  |
+|  / _\ / )( \(_  _)/  \  ___(  __)( \/ )/ __)/ )( \/ ___)(  __) |
+| /    \) \/ (  )( (  O )(___)) _)  )  (( (__ ) \/ (\___ \ ) _)  |
+| \_/\_/\____/ (__) \__/     (____)(_/\_)\___)\____/(____/(____) |
+|                                                                |
+#----------------------------------------------------------------#
+|                       flamespill#7488                          |
+|                https://discord.gg/9fDYMhQvPS                   |
+| Says what ever you put in the deathmessages table once you die |
+#----------------------------------------------------------------#
+|       Community shared Configs are in the Discord Server       |
+#----------------------------------------------------------------#
+|       Thanks to SirMeme and hstikkytokky for promotion         |
+#----------------------------------------------------------------#
+]])
 game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Discord",
-	Text = "Join Discord Server?",
+	Title = "Auto-Excuse",
+	Text = "Information in F9 Console",
 	Duration = 10,
 	Callback = Func,
-	Button1 = "Yes",
-	Button2 = "No"
+	Button1 = "Dismiss",
 })
 local dmsgsi = dmsgs.deathmessages
 local shitface = game:GetService("Players").LocalPlayer
