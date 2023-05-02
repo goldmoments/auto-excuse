@@ -18,7 +18,8 @@ warn([[
 ]])
 game:GetService("StarterGui"):SetCore("SendNotification", {
 	Title = "Auto-Excuse",
-	Text = "Information in F9 Console",
+	Text = "Information in the F9 Console",
+	Icon = "rbxassetid://12298448247"
 	Duration = 10,
 	Callback = Func,
 	Button1 = "Dismiss",
