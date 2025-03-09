@@ -1,40 +1,27 @@
-warn([[
+if not dmsgs then return end
+if autoexcuse then return end
 
-#----------------------------------------------------------------#
-|   __   _  _  ____  __       ____  _  _  ___  _  _  ____  ____  |
-|  / _\ / )( \(_  _)/  \  ___(  __)( \/ )/ __)/ )( \/ ___)(  __) |
-| /    \) \/ (  )( (  O )(___)) _)  )  (( (__ ) \/ (\___ \ ) _)  |
-| \_/\_/\____/ (__) \__/     (____)(_/\_)\___)\____/(____/(____) |
-|                                                                |
-#----------------------------------------------------------------#
-|                       flamespill#7488                          |
-|                https://discord.gg/9fDYMhQvPS                   |
-| Says what ever you put in the deathmessages table once you die |
-#----------------------------------------------------------------#
-|       Community shared Configs are in the Discord Server       |
-#----------------------------------------------------------------#
-|        Thanks to SirMeme and hstikkytokky for promotion        |
-#----------------------------------------------------------------#
-]])
-game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Auto-Excuse",
-	Text = "Information in the F9 Console",
-	Icon = "rbxassetid://12298448247",
-	Duration = 10,
-	Button1 = "Dismiss",
-})
-local dmsgsi = dmsgs.deathmessages
-local shitface = game:GetService("Players").LocalPlayer
-shitface.Character:BreakJoints()
-shitface.Character.Humanoid.Died:Connect(function()
-	local l1 = dmsgsi[math.random(1, #dmsgsi)]
-	local l2 = "All"
-	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(s1, s2)
-end)
-shitface.CharacterAdded:Connect(function(Character)
-Character:WaitForChild("Humanoid").Died:Connect(function()
-	local l1 = dmsgsi[math.random(1, #dmsgsi)]
-	local l2 = "All"
-	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(l1, l2)
-end)
-end)
+getgenv().autoexcuse = true
+
+local DeathMessages = dmsgs.deathmessages
+
+local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage")) or game:GetService("ReplicatedStorage")
+local TextChatService = cloneref(game:GetService("TextChatService")) or game:GetService("TextChatService")
+local Players = cloneref(game:GetService("Players")) or game:GetService("Players")
+
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+
+local function ChatDeathMessage()
+	local Message = DeathMessages[math.random(1, #DeathMessages)]
+	
+	task.wait(tonumber("1.".. string.len(Message) * 2))
+	
+	if TextChatService.ChatVersion ~= Enum.ChatVersion.LegacyChatService then
+		TextChatService.TextChannels.RBXGeneral:SendAsync(Message)
+	else
+		ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, "All")
+	end
+end
+
+Character:WaitForChild("Humanoid").Died:Connect(ChatDeathMessage)
