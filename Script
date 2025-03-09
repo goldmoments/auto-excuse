@@ -24,4 +24,10 @@ local function ChatDeathMessage()
 	end
 end
 
-Character:WaitForChild("Humanoid").Died:Connect(ChatDeathMessage)
+if LocalPlayer.Character then
+	LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(ChatDeathMessage)
+end
+
+LocalPlayer.CharacterAdded:Connect(function(Character)
+	Character:WaitForChild("Humanoid").Died:Connect(ChatDeathMessage)
+end)
