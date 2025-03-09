@@ -1,7 +1,7 @@
 if not dmsgs then return end
-if autoexcuse then return end
+--if autoexcuse then return end
 
-getgenv().autoexcuse = true
+--getgenv().autoexcuse = true
 
 local DeathMessages = dmsgs.deathmessages
 
